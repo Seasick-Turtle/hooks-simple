@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ResourceList = ({ resource }) => {
+const useResources = (resource) => {
+  /*
+   * this function allows for more reusable code
+   * by moving it from ResourceList, we are able
+   * to use this in other components that may have
+   * a need for it
+   */
+
   const [resources, setResources] = useState([]);
+
   /*
    * useEffect gets called every time the
    * component is rendered
@@ -29,6 +37,7 @@ const ResourceList = ({ resource }) => {
    * cause a rerender
    * state: todos -> todos... identical values
    */
+
   useEffect(
     () => {
       /*
@@ -41,12 +50,18 @@ const ResourceList = ({ resource }) => {
       *
       */
       ( async resource => {
-          const response = await axios.get(`https://jsonplaceholder.typicode.com/${resource}`);
+        const response = await axios.get(`https://jsonplaceholder.typicode.com/${resource}`);
 
-          setResources(response.data);
-        })(resource);
+        setResources(response.data);
+      })(resource);
 
-  },[resource]);
+    },[resource]);
+
+  return resources;
+};
+
+const ResourceList = ({ resource }) => {
+  const resources = useResources(resource);
 
     return (
       <ul>{resources.map(record => (
