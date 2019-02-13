@@ -1,6 +1,24 @@
 import React, { useState } from 'react';
 
 const App = () => {
+  /*
+  * left hand side:
+  *
+  * 'resource' --- contains present value of that state,
+  * same as this.state.resource
+  *
+  * 'setResource' --- setter function
+  * same as this.setState({ resource: 'posts' )};
+  *
+  *
+  * right hand side:
+  * useState --- function from React
+  *
+  * useState('posts') --- sets initial value of state
+  * similar to initialized state in a class
+  * ex: this.state({ resource: 'posts' )};
+  *
+  */
   const [resource, setResource] = useState('posts');
 
   return (
