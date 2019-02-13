@@ -11,8 +11,9 @@ const App = () => {
   * 'setResource' --- setter function
   * same as this.setState({ resource: 'posts' )};
   *
-  *
+  * *********************************************************
   * right hand side:
+  *
   * useState --- function from React
   *
   * useState('posts') --- sets initial value of state
